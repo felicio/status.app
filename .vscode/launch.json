@@ -9,6 +9,9 @@
       "type": "node-terminal",
       "request": "launch",
       "command": "yarn dev"
+      // "skipFiles": ["<node_internals>/**", "**/node_modules/**", "**/.next/**"],
+      // "smartStep": true,
+      // "sourceMaps": true
     },
     {
       "name": "Next.js: debug client-side",
@@ -26,6 +29,16 @@
         "uriFormat": "%s",
         "action": "debugWithChrome"
       }
+      // "smartStep": true,
+      // "skipFiles": [
+      //   // ".next/**",
+      //   // "${workspaceFolder}/**/*.js",
+      //   "${workspaceFolder}/.next/**/*.js",
+      //   "${workspaceFolder}/node_modules/**",
+      //   // "<node_internals>/**/*.js"
+      //   "<node_internals>/**"
+      // ],
+      // "sourceMaps": true
     }
   ]
 }
