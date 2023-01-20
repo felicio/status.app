@@ -3,6 +3,8 @@ import Head from 'next/head'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import { useState, useEffect } from 'react'
+import { GetServerSideProps } from 'next'
+import { ParsedUrlQuery } from 'querystring'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,14 +19,27 @@ type Props = {
   data?: string
 }
 
-export async function getServerSideProps(context: any) {
+interface Query extends ParsedUrlQuery {
+  entity: string
+  slug: string[]
+}
+
+export const getServerSideProps: GetServerSideProps<Props, Query> = async (
+  context,
+) => {
   const { params, req } = context
 
-  const entity = params.entity
-  const data = params.slug[params.slug.length - 1]
+  const entity = params!.entity
+  const data = params!.slug[params!.slug.length - 1]
   const url = `https://${req.headers.host}${req.url}`
 
-  return { props: { entity, data, url } }
+  const props: Props = {
+    entity,
+    data,
+    url,
+  }
+
+  return { props }
 }
 
 export default function Entity(props: Props) {
