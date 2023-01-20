@@ -22,17 +22,17 @@ export async function getServerSideProps(context) {
 }
 
 export default function Entity(props) {
-  const { entity, data, url } = props
-
-  if (!['c', 'cc', 'u'].includes(entity)) {
-    return <Error statusCode={404} />
-  }
-
   const [location, setLocation] = useState()
 
   useEffect(() => {
     setLocation(window.location)
   }, [])
+
+  const { entity, data, url } = props
+
+  if (!['c', 'cc', 'u'].includes(entity)) {
+    return <Error statusCode={404} />
+  }
 
   const searchParams = new URL(url).searchParams.toString()
 
