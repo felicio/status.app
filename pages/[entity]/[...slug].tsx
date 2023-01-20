@@ -11,7 +11,13 @@ const inter = Inter({ subsets: ['latin'] })
 // { entity: 'apple-touch-icon-precomposed.png' } /apple-touch-icon-precomposed.png
 // { entity: 'apple-touch-icon.png' } /apple-touch-icon.png
 
-export async function getServerSideProps(context) {
+type Props = {
+  entity: string
+  url: string
+  data?: string
+}
+
+export async function getServerSideProps(context: any) {
   const { params, req } = context
 
   const entity = params.entity
@@ -21,8 +27,8 @@ export async function getServerSideProps(context) {
   return { props: { entity, data, url } }
 }
 
-export default function Entity(props) {
-  const [location, setLocation] = useState()
+export default function Entity(props: Props) {
+  const [location, setLocation] = useState<Location>()
 
   useEffect(() => {
     setLocation(window.location)
