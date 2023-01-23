@@ -16,7 +16,7 @@ const inter = Inter({ subsets: ['latin'] })
 type Props = {
   entity: string
   url: string
-  data?: string
+  data: string
 }
 
 interface Query extends ParsedUrlQuery {
@@ -30,8 +30,8 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async (
   const { params, req } = context
 
   const entity = params!.entity
-  const data = params!.slug[params!.slug.length - 1]
-  const url = `https://${req.headers.host}${req.url}`
+  const data = params!.slug[params!.slug.length - 1].replaceAll(';', '')
+  const url = `https://${req.headers.host}${req.url!.replaceAll(';', '')}`
 
   const props: Props = {
     entity,
