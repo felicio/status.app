@@ -27,7 +27,7 @@ interface Query extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps<Props, Query> = async (
   context,
 ) => {
-  const { params, req } = context
+  const { params, req, res } = context
 
   const entity = params!.entity
   const data = params!.slug[params!.slug.length - 1].replaceAll(';', '')
@@ -38,6 +38,15 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async (
     data,
     url,
   }
+
+  // todo: set s-maxage according to if waku returned within
+  res.setHeader(
+    'Cache-Control',
+    'public, max-age=0, s-maxage=1, stale-while-revalidate=900',
+    // 'public, max-age=0, s-maxage=600, stale-while-revalidate=900',
+    // 'public, s-maxage=10, stale-while-revalidate=59',
+    // 'public, max-age=31536000, immutable',
+  )
 
   return { props }
 }
