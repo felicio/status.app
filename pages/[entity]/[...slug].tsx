@@ -42,7 +42,8 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async (
   // todo: set s-maxage according to if waku returned within
   res.setHeader(
     'Cache-Control',
-    'public, max-age=0, s-maxage=1, stale-while-revalidate=900',
+    'public, max-age=0, s-maxage=180, stale-while-revalidate=239',
+    // 'public, max-age=0, s-maxage=1, stale-while-revalidate=900',
     // 'public, max-age=0, s-maxage=600, stale-while-revalidate=900',
     // 'public, s-maxage=10, stale-while-revalidate=59',
     // 'public, max-age=31536000, immutable',
