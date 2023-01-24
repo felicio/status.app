@@ -68,6 +68,8 @@ export default function Entity(props: Props) {
     return <Error statusCode={404} />
   }
 
+  // todo?: sort
+  // todo?: log content url
   const searchParams = new URL(url).searchParams.toString()
   const now = new Date().toUTCString()
 

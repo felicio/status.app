@@ -6,6 +6,7 @@ export const config = {
   runtime: 'edge',
 }
 
+// todo: set cache header too
 export default function handler(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url)
