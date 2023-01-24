@@ -17,6 +17,7 @@ type Props = {
   entity: string
   url: string
   data: string
+  now: string
 }
 
 interface Query extends ParsedUrlQuery {
@@ -32,11 +33,13 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async (
   const entity = params!.entity
   const data = params!.slug[params!.slug.length - 1].replaceAll(';', '')
   const url = `https://${req.headers.host}${req.url!.replaceAll(';', '')}`
+  const now = new Date().toUTCString()
 
   const props: Props = {
     entity,
     data,
     url,
+    now,
   }
 
   // todo: set s-maxage according to if waku returned within
@@ -59,7 +62,7 @@ export default function Entity(props: Props) {
   //   setLocation(window.location)
   // }, [])
 
-  const { entity, data, url } = props
+  const { entity, data, url, now: nowProp } = props
 
   if (!['c', 'cc', 'u'].includes(entity)) {
     return <Error statusCode={404} />
@@ -83,6 +86,11 @@ export default function Entity(props: Props) {
         />
       </Head>
       <main className={styles.main}>
+        <div>
+          <p className={inter.className}>{nowProp}</p>
+        </div>
+
+        <br />
         <div>
           <p className={inter.className}>{now}</p>
         </div>
