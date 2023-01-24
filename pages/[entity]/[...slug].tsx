@@ -2,7 +2,7 @@ import Error from 'next/error'
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 
@@ -53,11 +53,11 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async (
 }
 
 export default function Entity(props: Props) {
-  const [location, setLocation] = useState<Location>()
+  // const [location, setLocation] = useState<Location>()
 
-  useEffect(() => {
-    setLocation(window.location)
-  }, [])
+  // useEffect(() => {
+  //   setLocation(window.location)
+  // }, [])
 
   const { entity, data, url } = props
 
@@ -83,14 +83,22 @@ export default function Entity(props: Props) {
       </Head>
       <main className={styles.main}>
         <div>
-          <p className={inter.className}>{JSON.stringify(url)}</p>
+          <p className={inter.className}>{new Date().toUTCString()}</p>
         </div>
 
-        {location && (
+        <br />
+
+        <div>
+          <p className={inter.className} style={{ wordBreak: 'break-all' }}>
+            {JSON.stringify(url)}
+          </p>
+        </div>
+
+        {/* {location && (
           <div>
             <p className={inter.className}>{location.href}</p>
           </div>
-        )}
+        )} */}
       </main>
     </>
   )

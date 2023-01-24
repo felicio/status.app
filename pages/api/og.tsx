@@ -143,6 +143,19 @@ export default function handler(req: NextRequest) {
               borderRadius: '8px',
             }}
           />
+          <div
+            style={{
+              fontSize: 20,
+              fontStyle: 'normal',
+              letterSpacing: '-0.025em',
+              color: 'black',
+              marginTop: 30,
+              padding: '0 120px',
+              lineHeight: 1.4,
+              whiteSpace: 'pre-wrap',
+            }}>
+            {new Date().toUTCString()}
+          </div>
         </div>
       ),
       {
