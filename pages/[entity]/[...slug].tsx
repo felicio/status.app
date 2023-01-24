@@ -5,6 +5,7 @@ import styles from '@/styles/Home.module.css'
 // import { useState, useEffect } from 'react'
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
+import { createPreviewClient } from '@/lib/preview-client/preview-client'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,6 +19,7 @@ type Props = {
   url: string
   data: string
   now: string
+  communityPreview: any
 }
 
 interface Query extends ParsedUrlQuery {
@@ -35,11 +37,29 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async (
   const url = `https://${req.headers.host}${req.url!.replaceAll(';', '')}`
   const now = new Date().toUTCString()
 
+  // Preview Client
+  console.log(':start', new Date().toISOString())
+  const client = await createPreviewClient({
+    environment: 'test',
+  })
+  // process.once('SIGTERM', async () => {
+  //   await client.stop()
+  // })
+  // process.once('SIGINT', async () => {
+  //   await client.stop()
+  // })
+  const communityPreview = await client.fetchCommunityPreview()
+  delete communityPreview?.banner
+  delete communityPreview?.photo
+  await client.stop()
+  console.log(':end', new Date().toISOString())
+
   const props: Props = {
     entity,
     data,
     url,
     now,
+    communityPreview: JSON.stringify(communityPreview),
   }
 
   // todo: set s-maxage according to if waku returned within
@@ -62,7 +82,7 @@ export default function Entity(props: Props) {
   //   setLocation(window.location)
   // }, [])
 
-  const { entity, data, url, now: nowProp } = props
+  const { entity, data, url, now: nowProp, communityPreview } = props
 
   if (!['c', 'cc', 'u'].includes(entity)) {
     return <Error statusCode={404} />
@@ -95,6 +115,15 @@ export default function Entity(props: Props) {
         <br />
         <div>
           <p className={inter.className}>{now}</p>
+        </div>
+
+        <br />
+
+        <div>
+          <p className={inter.className} style={{ wordBreak: 'break-all' }}>
+            {/* {JSON.stringify(communityPreview)} */}
+            {communityPreview}
+          </p>
         </div>
 
         <br />
