@@ -66,6 +66,7 @@ export default function Entity(props: Props) {
   }
 
   const searchParams = new URL(url).searchParams.toString()
+  const now = new Date().toUTCString()
 
   return (
     <>
@@ -83,7 +84,7 @@ export default function Entity(props: Props) {
       </Head>
       <main className={styles.main}>
         <div>
-          <p className={inter.className}>{new Date().toUTCString()}</p>
+          <p className={inter.className}>{now}</p>
         </div>
 
         <br />

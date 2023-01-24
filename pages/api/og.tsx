@@ -9,6 +9,7 @@ export const config = {
 export default function handler(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url)
+    const now = new Date().toUTCString()
 
     // ?title=<title>
     // const hasTitle = searchParams.has('title')
@@ -154,7 +155,7 @@ export default function handler(req: NextRequest) {
               lineHeight: 1.4,
               whiteSpace: 'pre-wrap',
             }}>
-            {new Date().toUTCString()}
+            {now}
           </div>
         </div>
       ),
