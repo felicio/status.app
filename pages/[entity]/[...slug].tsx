@@ -40,7 +40,7 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async (
   // Preview Client
   console.log(':start', new Date().toISOString())
   const client = await createPreviewClient({
-    environment: 'test',
+    environment: 'production',
   })
   // process.once('SIGTERM', async () => {
   //   await client.stop()
