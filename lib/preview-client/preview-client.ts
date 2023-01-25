@@ -75,7 +75,7 @@ class PreviewClient {
         },
       })
       await waku.start()
-      await waitForRemotePeer(waku, [Protocols.Store], 5 * 1000)
+      await waitForRemotePeer(waku, [Protocols.Store], 15 * 1000)
 
       // Preview Client
       previewClient = new PreviewClient(waku)
