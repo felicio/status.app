@@ -5,7 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
+    "prebuild": "npm run build:js && npm run build:icons && npm run build:components",
     "build": "next build",
+    "build:icons": "cd ./node_modules/@status-im/components && npm install --ignore-scripts --force && cd packages/icons && npm run build && cd ../../../../../",
+    "build:components": "cd ./node_modules/@status-im/components && npm install --ignore-scripts --force && cd packages/components && npm run build && cd ../../../../../",
+    "build:js": "cd ./node_modules/@status-im/js && npm install --ignore-scripts && cd packages/status-js && npm run build && cd ../../../../../",
     "start": "next start",
     "lint": "next lint"
   },
