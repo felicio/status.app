@@ -5,7 +5,6 @@ import styles from '@/styles/Home.module.css'
 // import { useState, useEffect } from 'react'
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { createPreviewClient } from '@/lib/preview-client/preview-client'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -39,19 +38,19 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async (
 
   // Preview Client
   console.log(':start', new Date().toISOString())
-  const client = await createPreviewClient({
-    environment: 'production',
-  })
+  // const client = await createPreviewClient({
+  //   environment: 'production',
+  // })
   // process.once('SIGTERM', async () => {
   //   await client.stop()
   // })
   // process.once('SIGINT', async () => {
   //   await client.stop()
   // })
-  const communityPreview = await client.fetchCommunityPreview()
-  delete communityPreview?.banner
-  delete communityPreview?.photo
-  await client.stop()
+  // const communityPreview = await client.fetchCommunityPreview()
+  // delete communityPreview?.banner
+  // delete communityPreview?.photo
+  // await client.stop()
   console.log(':end', new Date().toISOString())
 
   const props: Props = {
@@ -59,7 +58,8 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async (
     data,
     url,
     now,
-    communityPreview: JSON.stringify(communityPreview),
+    // communityPreview: JSON.stringify(communityPreview),
+    communityPreview: '',
   }
 
   // todo: set s-maxage according to if waku returned within
