@@ -1,3 +1,5 @@
+// Visit http://localhost:3000/cc/1/2/dataA;z?dataB=z#&dataC=z
+
 import Error from 'next/error'
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
@@ -5,22 +7,24 @@ import styles from '@/styles/Home.module.css'
 import { useState, useEffect } from 'react'
 import { GetServerSideProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-// import { createPreviewClient } from '../../node_modules/@status-im/js/packages/status-js/dist/index.es'
+// import {
+//   createPreviewClient,
+//   // decodeCommunityURLData,
+// } from '../../node_modules/@status-im/js/packages/status-js/dist/index.es'
 import { Paragraph } from '../../node_modules/@status-im/components/packages/components/dist/typography/index'
+import { Avatar } from '../../node_modules/@status-im/components/packages/components/dist/avatar/index'
+import { Button } from '../../node_modules/@status-im/components/packages/components/dist/button/index'
+import { Heading } from '../../node_modules/@status-im/components/packages/components/dist/typography/index'
+import { Label } from '../../node_modules/@status-im/components/packages/components/dist/typography/index'
+
+// import { mockData } from '../../.data/mockData'
 
 const inter = Inter({ subsets: ['latin'] })
-
-// http://localhost:3000/g/1/2/dataA;z?dataB=z#&dataC=z
-
-// { entity: 'apple-touch-icon-precomposed.png' } /apple-touch-icon-precomposed.png
-// { entity: 'apple-touch-icon.png' } /apple-touch-icon.png
 
 type Props = {
   entity: string
   url: string
-  data: string
   now: string
-  communityPreview: any
 }
 
 interface Query extends ParsedUrlQuery {
@@ -34,40 +38,16 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async (
   const { params, req, res } = context
 
   const entity = params!.entity
-  const data = params!.slug[params!.slug.length - 1].replaceAll(';', '')
   const url = `https://${req.headers.host}${req.url!.replaceAll(';', '')}`
   const now = new Date().toUTCString()
 
-  // // Preview Client
-  // console.log(':start', new Date().toISOString())
-  // const client = await createPreviewClient({
-  //   environment: 'test',
-  // })
-  // // process.once('SIGTERM', async () => {
-  // //   await client.stop()
-  // // })
-  // // process.once('SIGINT', async () => {
-  // //   await client.stop()
-  // // })
-  // const communityPreview = await client.fetchCommunityPreview(
-  //   '0x029f196bbfef4fa6a5eb81dd802133a63498325445ca1af1d154b1bb4542955133',
-  // )
-  // console.log(communityPreview)
-  // // delete communityPreview?.banner
-  // // delete communityPreview?.photo
-  // // await client.stop()
-  // // console.log(':end', new Date().toISOString())
-
   const props: Props = {
     entity,
-    data,
     url,
     now,
-    // communityPreview: JSON.stringify(communityPreview),
-    communityPreview: '',
   }
 
-  // todo: set s-maxage according to if waku returned within
+  // todo: set s-maxage according to if waku returned within; no longer relevant
   res.setHeader(
     'Cache-Control',
     'public, max-age=0, s-maxage=180, stale-while-revalidate=239',
@@ -81,74 +61,81 @@ export const getServerSideProps: GetServerSideProps<Props, Query> = async (
 }
 
 export default function Entity(props: Props) {
+  // todo: set decoded data
+  // todo: set loading state
+  // todo: set valid/invalid/outdated data comparison state
   const [location, setLocation] = useState<Location>()
   // const [client, setClient] = useState<any>()
-  const [community, setCommunity] = useState<any>()
+  const [community, setCommunity] = useState<any>({
+    displayName: 'Boring community 🇺🇸 🏁',
+    description:
+      "&lt;+ěščřžýáíé='&lt;+ěščřžýáíé='&lt;+ěščřžýáíé='&lt;+ěščřžýáíé='&lt;+ěščřžýáíé='&lt;+ěščřž",
+    membersCount: 54,
+    color: '#4360DF',
+  })
+  // const [channel, setChannel] = useState<any>()
+  // const [user, setUser] = useState<any>()
 
   useEffect(() => {
     setLocation(window.location)
   }, [])
 
   // useEffect(() => {
-  //   console.log('CLIENT')
-
+  //   // todo: set env
+  //   // todo: select peers by reagion or use disovery?
   //   createPreviewClient({
   //     environment: 'test',
-  //   }).then((client) => {
-  //     // setClient(client)
-
-  //     client
-  //       .fetchCommunityPreview(
-  //         '0x029f196bbfef4fa6a5eb81dd802133a63498325445ca1af1d154b1bb4542955133',
-  //       )
-  //       // .fetchUserPreview(
-  //       //   '0x0466382f82d00d7e75d8cec07b4f95040290a1727a6710bb4cca986f55311e15c018b89bc4888bbb3ba5a49c1da8288da58077f00a308e397cf30a30c645711a52',
-  //       // )
-  //       .then((community) => {
-  //         console.log('COMMUNITY')
-  //         console.log(client)
-  //         console.log(community)
-  //         setCommunity(community)
-  //       })
-  //       .catch((err) => {
-  //         console.error('ERROR')
-  //         console.error(err)
-  //       })
   //   })
+  //     .then((client) => {
+  //       setClient(client)
+  //     })
+  //     .catch((err) => {
+  //       // todo: handle
+  //       console.error(err)
+  //     })
   // }, [])
 
-  const { entity, data, url, now: nowProp, communityPreview } = props
+  // useEffect(() => {
+  //   if (client) {
+  //     switch (props.entity) {
+  //       case 'c': {
+  //         client.fetchCommunityPreview('').then((community) => {
+  //           // todo: compare decoded data and set comparison state
+  //           setCommunity(community)
+  //         })
+  //         break
+  //       }
+
+  //       case 'cc': {
+  //         client.fetchChannelPreview('').then((channel) => {
+  //           setChannel(channel)
+  //         })
+
+  //         break
+  //       }
+
+  //       case 'u': {
+  //         client.fetchUserPreview('').then((user) => {
+  //           setUser(user)
+  //         })
+
+  //         break
+  //       }
+  //     }
+  //   }
+  // }, [])
+
+  const { entity, url, now: nowProp } = props
 
   if (!['c', 'cc', 'u'].includes(entity)) {
     return <Error statusCode={404} />
   }
 
-  // todo?: sort
-  // todo?: log content url
   const searchParams = new URL(url).searchParams.toString()
-  const now = new Date().toUTCString()
+  // const now = new Date().toUTCString()
 
-  // // Preview Client
-  // console.log(':start', new Date().toISOString())
-  // const client = await createPreviewClient({
-  //   environment: 'test',
-  // })
-  // // process.once('SIGTERM', async () => {
-  // //   await client.stop()
-  // // })
-  // // process.once('SIGINT', async () => {
-  // //   await client.stop()
-  // // })
-  // const communityPreview = await client.fetchCommunityPreview(
-  //   '0x029f196bbfef4fa6a5eb81dd802133a63498325445ca1af1d154b1bb4542955133',
-  // )
-  // console.log(communityPreview)
-  // // delete communityPreview?.banner
-  // // delete communityPreview?.photo
-  // // await client.stop()
-  // // console.log(':end', new Date().toISOString())
-
-  // init client when server component is loaded in browser
+  // todo: parse and decode url
+  // todo: verify checksum
 
   return (
     <>
@@ -164,48 +151,61 @@ export default function Entity(props: Props) {
           }/api/og?${searchParams}`}
         />
       </Head>
+      {/* todo?: theme; based on user system settings? */}
       <main className={styles.main}>
-        <div>
-          <Paragraph>JDI.</Paragraph>
-        </div>
+        <>
+          {/* todo?: switch entities or have seperate routes instead */}
+          {/* todo: banner */}
+          {community && (
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              {/* <Avatar
+              // src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&h=500&q=80"
+              // src=""
+              src={null}
+              size={56}
+            /> */}
+              <Heading>{community.displayName}</Heading>
+              <Paragraph>{community.description}</Paragraph>
+              <div>
+                {/* todo: icons */}
+                <Label>{community.membersCount}</Label>
+              </div>
+              {/* todo: tags */}
+              <Button>View community</Button>
+              <div>
+                <Paragraph>Community in</Paragraph>
+                {/* todo: icon */}
+                <Paragraph>Status</Paragraph>
+              </div>
+              {/* todo: dialog */}
+              <Button>Download Status</Button>
+            </div>
+          )}
 
-        {community && (
-          <div>
-            <p className={inter.className}>{community.description}</p>
-          </div>
-        )}
-
-        {/* <div>
+          {/* <div>
           <p className={inter.className}>{nowProp}</p>
         </div>
 
         <br />
+
         <div>
           <p className={inter.className}>{now}</p>
         </div> */}
 
-        {/* <br /> */}
+          {/* <br /> */}
 
-        <div>
-          <p className={inter.className} style={{ wordBreak: 'break-all' }}>
-            {/* {JSON.stringify(communityPreview)} */}
-            {communityPreview}
-          </p>
-        </div>
-
-        {/* <br /> */}
-
-        {/* <div>
+          {/* <div>
           <p className={inter.className} style={{ wordBreak: 'break-all' }}>
             {JSON.stringify(url)}
           </p>
         </div> */}
 
-        {location && (
-          <div>
-            <p className={inter.className}>{location.href}</p>
-          </div>
-        )}
+          {location && (
+            <div>
+              <p className={inter.className}>{location.href}</p>
+            </div>
+          )}
+        </>
       </main>
     </>
   )
