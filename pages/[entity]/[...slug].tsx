@@ -33,6 +33,10 @@ interface Query extends ParsedUrlQuery {
   slug: string[]
 }
 
+// todo?: handle requests for and provide images for adding the site to the home screen
+// { entity: 'apple-touch-icon-precomposed.png' } /apple-touch-icon-precomposed.png
+// { entity: 'apple-touch-icon.png' } /apple-touch-icon.png
+
 export const getServerSideProps: GetServerSideProps<Props, Query> = async (
   context,
 ) => {
@@ -135,8 +139,11 @@ export default function Entity(props: Props) {
   const searchParams = new URL(url).searchParams.toString()
   // const now = new Date().toUTCString()
 
-  // todo: parse and decode url
+  // todo: parse, validate and decode url
   // todo: verify checksum
+  // todo?!: resolve ENS with chat key records; or just past through
+  // todo: set constrains on url data
+  // todo: decoded url data againts schema
 
   return (
     <>
@@ -178,7 +185,8 @@ export default function Entity(props: Props) {
                 {/* todo: icon */}
                 <Paragraph>Status</Paragraph>
               </div>
-              {/* todo: dialog */}
+              {/* todo: download dialog */}
+              {/* todo: download QR */}
               <Button>Download Status</Button>
             </div>
           )}
