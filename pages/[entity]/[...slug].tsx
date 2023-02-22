@@ -11,8 +11,9 @@ import { ParsedUrlQuery } from 'querystring'
 //   createPreviewClient,
 //   // decodeCommunityURLData,
 // } from '../../node_modules/@status-im/js/packages/status-js/dist/index.es'
+// fixme: imports
 import { Paragraph } from '../../node_modules/@status-im/components/packages/components/dist/typography/index'
-import { Avatar } from '../../node_modules/@status-im/components/packages/components/dist/avatar/index'
+// import { Avatar } from '../../node_modules/@status-im/components/packages/components/dist/avatar/index'
 import { Button } from '../../node_modules/@status-im/components/packages/components/dist/button/index'
 import { Heading } from '../../node_modules/@status-im/components/packages/components/dist/typography/index'
 import { Label } from '../../node_modules/@status-im/components/packages/components/dist/typography/index'
@@ -159,11 +160,11 @@ export default function Entity(props: Props) {
           {community && (
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               {/* <Avatar
-              // src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&h=500&q=80"
-              // src=""
-              src={null}
-              size={56}
-            /> */}
+                // src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&h=500&q=80"
+                // src=""
+                src={null}
+                size={56}
+              /> */}
               <Heading>{community.displayName}</Heading>
               <Paragraph>{community.description}</Paragraph>
               <div>
