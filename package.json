@@ -17,7 +17,7 @@
   "dependencies": {
     "@next/font": "^13.0.6",
     "@scure/base": "^1.1.1",
-    "@status-im/components": "github:status-im/status-web#next",
+    "@status-im/components": "github:felicio/status-web#integration",
     "@status-im/js": "github:felicio/status-web#integration",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
