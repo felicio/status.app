@@ -1,5 +1,3 @@
-// Visit http://localhost:3000/cc/1/2/dataA;z?dataB=z#&dataC=z
-
 import Error from 'next/error'
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
@@ -76,6 +74,7 @@ export default function Entity(props: Props) {
   // todo: set loading state
   // todo: set valid/invalid/outdated data comparison state
   const [location, setLocation] = useState<Location>()
+  // todo: stop client
   // const [client, setClient] = useState<any>()
   const [community, setCommunity] = useState<any>({
     displayName: 'Boring community 🇺🇸 🏁',
@@ -112,6 +111,7 @@ export default function Entity(props: Props) {
   //       case 'c': {
   //         client.fetchCommunityPreview('').then((community) => {
   //           // todo: compare decoded data and set comparison state
+  //           // todo?: cache response
   //           setCommunity(community)
   //         })
   //         break
