@@ -37,6 +37,12 @@ interface Query extends ParsedUrlQuery {
 // { entity: 'apple-touch-icon-precomposed.png' } /apple-touch-icon-precomposed.png
 // { entity: 'apple-touch-icon.png' } /apple-touch-icon.png
 
+const VALID_ROUTES = [
+  'c', // community
+  'cc', // community channel
+  'u', // user
+]
+
 export const getServerSideProps: GetServerSideProps<Props, Query> = async (
   context,
 ) => {
@@ -132,7 +138,7 @@ export default function Entity(props: Props) {
 
   const { entity, url, now: nowProp } = props
 
-  if (!['c', 'cc', 'u'].includes(entity)) {
+  if (!VALID_ROUTES.includes(entity)) {
     return <Error statusCode={404} />
   }
 
