@@ -3,6 +3,7 @@
   // Hover to view descriptions of existing attributes.
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
+  // @see https://nextjs.org/docs/advanced-features/debugging for configuration example
   "configurations": [
     {
       "name": "Next.js: debug server-side",
@@ -17,18 +18,47 @@
       "name": "Next.js: debug client-side",
       "type": "chrome",
       "request": "launch",
-      "url": "http://localhost:3000"
+      "url": "http://localhost:3000",
+      // "smartStep": false
+      // "internalConsoleOptions": "neverOpen"
+      "skipFiles": [
+        ".next/**",
+        // "${workspaceFolder}/**/*.js",
+        // "${workspaceFolder}/.next/**/*.js",
+        "${workspaceFolder}/node_modules/**",
+        // "<node_internals>/**/*.js"
+        "<node_internals>/**",
+        "**/webpack-internal://**"
+      ]
     },
+    // todo: conssider https://code.visualstudio.com/docs/editor/debugging#_compound-launch-configurations instead
+    // todo: consider client+prelaunch as full stack
     {
       "name": "Next.js: debug full stack",
       "type": "node-terminal",
+      // "type": "node",
+      // "preLaunchTask": {
+      //   "task": "",
+      //   "type": ""
+      // },
       "request": "launch",
-      "command": "yarn dev",
+      // "command": "yarn dev",
+      "command": "yarn dev -p 3000",
+      // "outputCapture": "console",
+      // "internalConsoleOptions": "neverOpen",
       "serverReadyAction": {
+        // $ next dev
+        // Debugger attached.
+        // ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+        // "pattern": "started server on 0.0.0.0:3000, url: (https?://localhost:3000)",
         "pattern": "started server on .+, url: (https?://.+)",
-        "uriFormat": "%s",
-        "action": "debugWithChrome"
-      }
+        // "uriFormat": "%s",
+        // "action": "debugWithChrome",
+        // https://github.com/microsoft/vscode/blob/9f56e365d7dcca44701dae4dd54924b3016ae360/extensions/debug-server-ready/package.nls.json#L9
+        "action": "startDebugging",
+        "name": "Next.js: debug client-side",
+        "killOnServerStop": false
+      },
       // "smartStep": true,
       // "skipFiles": [
       //   // ".next/**",
@@ -39,6 +69,15 @@
       //   "<node_internals>/**"
       // ],
       // "sourceMaps": true
+      "skipFiles": [
+        ".next/**",
+        // "${workspaceFolder}/**/*.js",
+        // "${workspaceFolder}/.next/**/*.js",
+        "${workspaceFolder}/node_modules/**",
+        // "<node_internals>/**/*.js"
+        "<node_internals>/**"
+        // "**/webpack-internal://**"
+      ]
     }
   ]
 }
