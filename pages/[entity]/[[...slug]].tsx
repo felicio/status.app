@@ -17,6 +17,7 @@ import {
 // } from '@status-im/js'
 // fixme: imports
 import { Paragraph } from '../../node_modules/@status-im/components/packages/components/dist/typography/index'
+// import { Paragraph } from '@status-im/components'
 // import { Avatar } from '../../node_modules/@status-im/components/packages/components/dist/avatar/index'
 import { Button } from '../../node_modules/@status-im/components/packages/components/dist/button/index'
 import { Heading } from '../../node_modules/@status-im/components/packages/components/dist/typography/index'
@@ -277,7 +278,7 @@ export default function Preview(props: ServerSideProps) {
               {/* todo: avatar */}
               <Heading>{user.displayName}</Heading>
               <Paragraph>{user.description}</Paragraph>
-              {/* <Paragraph>{publicKeyToEmojiHash(publicKey)}</Paragraph> */}
+              <Paragraph>{publicKeyToEmojiHash(publicKey)}</Paragraph>
               <Paragraph>{publicKey}</Paragraph>
               {/* todo: links */}
               <Button>View profile</Button>
