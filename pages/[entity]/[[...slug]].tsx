@@ -12,8 +12,8 @@ import {
   decodeChannelUrlData,
   decodeUserUrlData,
   // fixme: `Module build failed: UnhandledSchemeError: Reading from "node:zlib" is not handled by plugins (Unhandled scheme).`
-  // publicKeyToEmojiHash,
-} from '../../node_modules/@status-im/js/packages/status-js/dist/index'
+  publicKeyToEmojiHash,
+} from '../../node_modules/@status-im/js/packages/status-js/dist/index.es'
 // } from '@status-im/js'
 // fixme: imports
 import { Paragraph } from '../../node_modules/@status-im/components/packages/components/dist/typography/index'
