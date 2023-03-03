@@ -14,7 +14,7 @@ const plugins = [
     components: [
       // fixme?: works without it
       // './node_modules/@status-im/components/packages/components/dist',
-      // '@status-im/components'
+      // '@status-im/components',
     ],
     importsWhitelist: ['constants.js', 'colors.js'],
     logTimings: true,
@@ -49,9 +49,8 @@ export default function config() {
     transpilePackages: [
       'react-native-web',
       // fixme?: works without it
-      // '@status-im/components',
+      '@status-im/components',
     ],
-
     experimental: {
       legacyBrowsers: false,
     },

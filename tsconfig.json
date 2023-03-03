@@ -15,12 +15,21 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": ".",
+    "rootDir": ".",
     // "paths": {
     //   "@/*": ["./*"]
     // }
     "paths": {
-      "react-native": ["react-native-web"]
-    }
+      "react-native": ["react-native-web"],
+      "@/*": ["./*"],
+      // "@status-im/*": ["./node_modules/@status-im/*"]
+      "@status-im/js": ["./node_modules/@status-im/js/packages/status-js"],
+      "@status-im/components": [
+        "./node_modules/@status-im/components/packages/components"
+      ]
+    },
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
