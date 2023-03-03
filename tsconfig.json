@@ -15,8 +15,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": ".",
+    // "paths": {
+    //   "@/*": ["./*"]
+    // }
     "paths": {
-      "@/*": ["./*"]
+      "react-native": ["react-native-web"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
