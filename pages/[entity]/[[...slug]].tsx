@@ -12,7 +12,7 @@ import {
   decodeChannelUrlData,
   decodeUserUrlData,
   // fixme: `Module build failed: UnhandledSchemeError: Reading from "node:zlib" is not handled by plugins (Unhandled scheme).`
-  publicKeyToEmojiHash,
+  // publicKeyToEmojiHash,
 } from '../../node_modules/@status-im/js/packages/status-js/dist/index.es'
 // } from '@status-im/js'
 // fixme: imports
@@ -278,7 +278,7 @@ export default function Preview(props: ServerSideProps) {
               {/* todo: avatar */}
               <Heading>{user.displayName}</Heading>
               <Paragraph>{user.description}</Paragraph>
-              <Paragraph>{publicKeyToEmojiHash(publicKey)}</Paragraph>
+              {/* <Paragraph>{publicKeyToEmojiHash(publicKey)}</Paragraph> */}
               <Paragraph>{publicKey}</Paragraph>
               {/* todo: links */}
               <Button>View profile</Button>

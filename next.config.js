@@ -32,6 +32,14 @@ const plugins = [
 export default function config() {
   /** @type {import('next').NextConfig} */
   let config = {
+    // webpack: (
+    //   config,
+    //   { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack },
+    // ) => {
+    //   // Important: return the modified config
+    //   // console.log('HERE', isServer)
+    //   return { ...config, nextRuntime: 'edge' }
+    // },
     typescript: {
       ignoreBuildErrors: true,
     },
