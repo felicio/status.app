@@ -16,9 +16,6 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "rootDir": ".",
-    // "paths": {
-    //   "@/*": ["./*"]
-    // }
     "paths": {
       "react-native": ["react-native-web"],
       "@/*": ["./*"],
