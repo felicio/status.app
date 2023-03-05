@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
-import nextTamagui from '@tamagui/next-plugin'
-import { join } from 'path'
-
-const { withTamagui } = nextTamagui
+const { withTamagui } = require('@tamagui/next-plugin')
+const { join } = require('path')
 
 process.env.IGNORE_TS_CONFIG_PATHS = 'true'
 process.env.TAMAGUI_TARGET = 'web'
@@ -29,7 +27,7 @@ const plugins = [
   }),
 ]
 
-export default function config() {
+module.exports = function () {
   /** @type {import('next').NextConfig} */
   let config = {
     // webpack: (

@@ -2,7 +2,6 @@
   "name": "status-app",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "prebuild": "npm run build:js && npm run build:icons && npm run build:components",
@@ -12,7 +11,8 @@
     "build:js": "cd ./node_modules/@status-im/js && npm install --force --ignore-scripts && cd packages/status-js &&  npm run build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "rimraf .next .tamagui node_modules"
+    "clean": "rimraf .next .tamagui node_modules",
+    "serve": "NODE_ENV=production next start --port 8151"
   },
   "dependencies": {
     "@next/font": "^13.2.3",
