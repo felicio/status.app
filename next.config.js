@@ -48,7 +48,7 @@ export default function config() {
     },
     transpilePackages: [
       'react-native-web',
-      // fixme?: works without it
+      '@status-im/js',
       '@status-im/components',
     ],
     experimental: {

@@ -57,3 +57,11 @@ visit: http://localhost:3000/u?d=GxgBoJwHdsOLl4DWt55mGELN6clGsb1UKTEkT0KUMDfwhWF
 > All features of next-transpile-modules are now natively built-in Next.js 13.1. Please use Next's transpilePackages option
 >
 > – <https://www.npmjs.com/package/next-transpile-modules>
+
+> Cannot find module 'react-native'
+>
+> – <https://github.com/vercel/next.js/issues/12481>
+
+> How can I clean the build cache?
+>
+> – <https://github.com/vercel/community/discussions/457>
