@@ -53,3 +53,7 @@ visit: http://localhost:3000/u?d=GxgBoJwHdsOLl4DWt55mGELN6clGsb1UKTEkT0KUMDfwhWF
 > Sometimes, you may not want to use the Build cache for a specific deployment. You can invalidate or delete the existing Build cache in three ways:
 >
 > – <https://vercel.com/docs/concepts/deployments/troubleshoot-a-build#excluding-development-dependencies>
+
+> All features of next-transpile-modules are now natively built-in Next.js 13.1. Please use Next's transpilePackages option
+>
+> – <https://www.npmjs.com/package/next-transpile-modules>
