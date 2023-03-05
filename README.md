@@ -43,3 +43,13 @@ visit: http://localhost:3000/u?d=GxgBoJwHdsOLl4DWt55mGELN6clGsb1UKTEkT0KUMDfwhWF
 > The Vercel build pipeline only supports Yarn 2 for static builds. Serverless Functions and SSR (Server-side Rendering) will not work with Yarn 2. The Vercel build pipeline fully supports Yarn 1 for all deployment types.
 >
 > – <https://vercel.com/guides/does-vercel-support-yarn-2>
+
+> The following files are cached in addition to node_modules/**, yarn.lock, and package-lock.json.
+>
+> .next/cache/**
+>
+> – <https://vercel.com/docs/concepts/deployments/troubleshoot-a-build#what-is-cached>
+
+> Sometimes, you may not want to use the Build cache for a specific deployment. You can invalidate or delete the existing Build cache in three ways:
+>
+> – <https://vercel.com/docs/concepts/deployments/troubleshoot-a-build#excluding-development-dependencies>
