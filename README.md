@@ -68,6 +68,10 @@ visit: http://localhost:3000/u?d=GxgBoJwHdsOLl4DWt55mGELN6clGsb1UKTEkT0KUMDfwhWF
 >
 > – <https://github.com/vercel/community/discussions/457>
 
+> vercel deployment patches
+>
+> – <https://github.com/ds300/patch-package/issues/326>
+
 ---
 
 ```js
@@ -175,4 +179,22 @@ TypeError [ERR_IMPORT_ASSERTION_TYPE_MISSING]: Module "file:///<path-to-clone>/s
 }
 
 // src/default-ssdp-options.ts
+```
+
+```shell
+npm ERR! code 1
+11:47:11.690 npm ERR! path /vercel/path0/node_modules/@status-im/js
+11:47:11.692 npm ERR! command failed
+11:47:11.692 npm ERR! command sh -c -- patch-package
+11:47:11.692 npm ERR! patch-package 6.5.1
+11:47:11.692 npm ERR! Applying patches...
+11:47:11.692 npm ERR! Error: Patch file found for package ssdp which is not present at node_modules/@achingbrain/ssdp
+11:47:11.693 npm ERR! ---
+11:47:11.693 npm ERR! patch-package finished with 1 error(s).
+11:47:11.694
+11:47:11.695 npm ERR! A complete log of this run can be found in:
+11:47:11.695 npm ERR!     /vercel/.npm/_logs/2023-03-06T10_41_21_363Z-debug-0.log
+11:47:11.747 Error: Command "npm install" exited with 1
+
+// vercel/path0/node_modules/@status-im/js
 ```
