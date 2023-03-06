@@ -71,6 +71,31 @@ visit: http://localhost:3000/u?d=GxgBoJwHdsOLl4DWt55mGELN6clGsb1UKTEkT0KUMDfwhWF
 ---
 
 ```js
+Module build failed: UnhandledSchemeError: Reading from "node:zlib" is not handled by plugins (Unhandled scheme).
+Webpack supports "data:" and "file:" URIs by default.
+You may need an additional plugin to handle "node:" URIs.
+    at /Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:28:395974
+    at Hook.eval [as callAsync] (eval at create (/Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:13:28771), <anonymous>:6:1)
+    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (/Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:13:25925)
+    at Object.processResource (/Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:28:395899)
+    at processResource (/Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:1:280173)
+    at iteratePitchingLoaders (/Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:1:279532)
+    at runLoaders (/Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:1:283436)
+    at NormalModule._doBuild (/Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:28:395761)
+    at NormalModule.build (/Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:28:397789)
+    at /Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:28:81243
+    at NormalModule.needBuild (/Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:28:401902)
+    at Compilation._buildModule (/Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:28:80960)
+    at /Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:28:1301554
+    at Hook.eval [as callAsync] (eval at create (/Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:13:28771), <anonymous>:6:1)
+    at AsyncQueue._startProcessing (/Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:28:1301425)
+    at AsyncQueue._ensureProcessing (/Users/felicio/Projects/status-im/status-app/node_modules/next/dist/compiled/webpack/bundle5.js:28:1301274)
+    at process.processImmediate (node:internal/timers:471:21)
+
+// ./node_modules/@status-im/js/packages/status-js/dist/index.es.js
+```
+
+```js
 Error: Cannot find module '/vercel/path0/node_modules/react-native-web/dist/cjs/exports/createElement'
 Require stack:
 - /var/task/.next/server/pages/_document.js
@@ -128,4 +153,26 @@ Runtime.ExitError
 // node_modules/@status-im/js/node_modules/@achingbrain/ssdp/package.json
 // node_modules/@status-im/js/node_modules/@achingbrain/ssdp/src/default-ssdp-options.ts
 // node_modules/@status-im/js/node_modules/@achingbrain/ssdp/dist/src/default-ssdp-options.js
+```
+
+```js
+node:internal/errors:484
+    ErrorCaptureStackTrace(err);
+    ^
+
+TypeError [ERR_IMPORT_ASSERTION_TYPE_MISSING]: Module "file:///<path-to-clone>/ssdp/dist/package.json" needs an import assertion of type "json"
+    at new NodeError (node:internal/errors:393:5)
+    at validateAssertions (node:internal/modules/esm/assert:82:15)
+    at defaultLoad (node:internal/modules/esm/load:84:3)
+    at nextLoad (node:internal/modules/esm/loader:163:28)
+    at ESMLoader.load (node:internal/modules/esm/loader:605:26)
+    at ESMLoader.moduleProvider (node:internal/modules/esm/loader:457:22)
+    at new ModuleJob (node:internal/modules/esm/module_job:63:26)
+    at #createModuleJob (node:internal/modules/esm/loader:480:17)
+    at ESMLoader.getModuleJob (node:internal/modules/esm/loader:434:34)
+    at async ModuleWrap.<anonymous> (node:internal/modules/esm/module_job:78:21) {
+  code: 'ERR_IMPORT_ASSERTION_TYPE_MISSING'
+}
+
+// src/default-ssdp-options.ts
 ```
