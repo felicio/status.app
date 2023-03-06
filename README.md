@@ -72,6 +72,18 @@ visit: http://localhost:3000/u?d=GxgBoJwHdsOLl4DWt55mGELN6clGsb1UKTEkT0KUMDfwhWF
 >
 > – <https://github.com/ds300/patch-package/issues/326>
 
+> Add from github source, in a specific subfolder
+>
+> – <https://github.com/pnpm/pnpm/issues/4765>
+
+> Vercel will automatically install all dependencies defined in package.json (even devDependencies, which can be excluded).
+>
+> – <https://vercel.com/docs/concepts/deployments/configure-a-build#install-command>
+
+> using pnpm with nextjs, module not found: Error: Can't resolve
+>
+> – <https://github.com/storybookjs/storybook/issues/20468>
+
 ---
 
 ```js
@@ -181,7 +193,7 @@ TypeError [ERR_IMPORT_ASSERTION_TYPE_MISSING]: Module "file:///<path-to-clone>/s
 // src/default-ssdp-options.ts
 ```
 
-```shell
+```sh
 npm ERR! code 1
 11:47:11.690 npm ERR! path /vercel/path0/node_modules/@status-im/js
 11:47:11.692 npm ERR! command failed
@@ -197,4 +209,15 @@ npm ERR! code 1
 11:47:11.747 Error: Command "npm install" exited with 1
 
 // vercel/path0/node_modules/@status-im/js
+```
+
+```sh
+npm ERR! npm ERR! code FETCH_ERROR
+npm ERR! npm ERR! errno FETCH_ERROR
+npm ERR! npm ERR! invalid json response body at https://registry.npmjs.org/@storybook%2fcsf-plugin reason: Invalid response body while trying to fetch https://registry.npmjs.org/@storybook%2fcsf-plugin: aborted
+```
+
+```sh
+sh: vite: command not found
+ ELIFECYCLE  Command failed.
 ```
