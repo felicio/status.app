@@ -3,9 +3,7 @@ import { NextRequest } from 'next/server'
 import { base58, utf8 } from '@scure/base'
 
 export const config = {
-  // runtime: 'edge',
-  // note?: because of next.js downgrade
-  runtime: 'experimental-edge',
+  runtime: 'edge',
 }
 
 // todo: set cache header too
