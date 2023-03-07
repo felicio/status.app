@@ -44,11 +44,7 @@ module.exports = function () {
     images: {
       disableStaticImages: true,
     },
-    transpilePackages: [
-      'react-native-web',
-      '@status-im/js',
-      '@status-im/components',
-    ],
+    transpilePackages: ['react-native-web', '@status-im/components'],
     experimental: {
       legacyBrowsers: false,
     },
