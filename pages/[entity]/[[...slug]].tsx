@@ -214,7 +214,7 @@ export default function Preview(props: ServerSideProps) {
   // }, [])
 
   if (isError(props)) {
-    // todo: check error code
+    // todo: check error code/custom 500 always
     // todo?: return some <Head> too
     return <Error statusCode={404} />
   }
@@ -261,8 +261,8 @@ export default function Preview(props: ServerSideProps) {
                 {/* todo: icon */}
                 <Paragraph>Status</Paragraph>
               </div>
-              {/* todo: download dialog */}
-              {/* todo: download QR */}
+              {/* todo: how-to sections */}
+              {/* todo: QR pop-up */}
               <Button>Download Status</Button>
             </div>
           )
@@ -361,7 +361,7 @@ export default function Preview(props: ServerSideProps) {
         {/* todo?: except communities; ask product */}
         <meta name="robots" content="noindex" />
       </Head>
-      {/* todo?: theme; based on user system settings? */}
+      {/* todo: theme; based on user system settings */}
       <main className={styles.main}>
         {/* <div>
           <p className={inter.className}>{nowProp}</p>
@@ -372,6 +372,8 @@ export default function Preview(props: ServerSideProps) {
         <div>
           <p className={inter.className}>{now}</p>
         </div> */}
+
+        {/* todo: install banner */}
 
         {renderEntity()}
       </main>
