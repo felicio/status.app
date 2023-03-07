@@ -1,4 +1,3 @@
-// import 'node:zlib'
 import Error from 'next/error'
 import Head from 'next/head'
 // import { Inter } from '@next/font/google'
@@ -11,8 +10,8 @@ import {
   decodeCommunityUrlData,
   decodeChannelUrlData,
   decodeUserUrlData,
-  // fixme: `Module build failed: UnhandledSchemeError: Reading from "node:zlib" is not handled by plugins (Unhandled scheme).`
-  // publicKeyToEmojiHash,
+  publicKeyToEmojiHash,
+  deserializePublicKey,
   // } from '../../node_modules/@status-im/js/packages/status-js/dist/index.es'
 } from '@status-im/js'
 // fixme: imports
@@ -93,6 +92,17 @@ export const getServerSideProps: GetServerSideProps<
   const now = new Date().toUTCString()
   const encodedData = url.searchParams.get('d')
 
+  if (!encodedData) {
+    const props: ServerSideProps = {
+      entity,
+      url: url.toString(),
+      now,
+      data: null,
+    }
+
+    return { props }
+  }
+
   let decodedData
   try {
     switch (entity) {
@@ -150,7 +160,9 @@ export default function Preview(props: ServerSideProps) {
   useEffect(() => {
     // todo?: extend spec for more than just public key after #
     // todo?: OR signature
-    const publicKey = window.location.hash.replace('#', '')
+    // todo: handle error
+    const hash = window.location.hash.replace('#', '')
+    const publicKey = deserializePublicKey(hash)
 
     setPublicKey(publicKey)
   }, [])
@@ -237,7 +249,7 @@ export default function Preview(props: ServerSideProps) {
               <Heading>{community.displayName}</Heading>
               <Paragraph>{community.description}</Paragraph>
               {/* todo?: add to desings */}
-              <Paragraph>{publicKey}</Paragraph>
+              {publicKey && <Paragraph>{publicKey}</Paragraph>}
               <div>
                 {/* todo: icons */}
                 <Label>{community.membersCount}</Label>
@@ -265,7 +277,7 @@ export default function Preview(props: ServerSideProps) {
               <Heading># {channel.displayName}</Heading>
               <Paragraph>{channel.description}</Paragraph>
               {/* todo: indicate that it's community's */}
-              <Paragraph>{publicKey}</Paragraph>
+              {publicKey && <Paragraph>{publicKey}</Paragraph>}
               {/* todo: tags */}
               <Button># View channel</Button>
               <div>
@@ -286,7 +298,9 @@ export default function Preview(props: ServerSideProps) {
               {/* todo: avatar */}
               <Heading>{user.displayName}</Heading>
               <Paragraph>{user.description}</Paragraph>
-              {/* <Paragraph>{publicKeyToEmojiHash(publicKey)}</Paragraph> */}
+              {publicKey && (
+                <Paragraph>{publicKeyToEmojiHash(publicKey)}</Paragraph>
+              )}
               <Paragraph>{publicKey}</Paragraph>
               {/* todo: links */}
               <Button>View profile</Button>
