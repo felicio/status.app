@@ -12,23 +12,8 @@ import {
   decodeUserUrlData,
   publicKeyToEmojiHash,
   deserializePublicKey,
-  // } from '../../node_modules/@status-im/js/packages/status-js/dist/index.es'
 } from '@status-im/js'
-// fixme: imports
-//
-// import { Paragraph } from '../../node_modules/@status-im/components/packages/components/dist/typography/index'
-// // import { Paragraph } from '@status-im/components'
-// // import { Avatar } from '../../node_modules/@status-im/components/packages/components/dist/avatar/index'
-// import { Button } from '../../node_modules/@status-im/components/packages/components/dist/button/index'
-// import { Heading } from '../../node_modules/@status-im/components/packages/components/dist/typography/index'
-// import { Label } from '../../node_modules/@status-im/components/packages/components/dist/typography/index'
-//
 import { Paragraph, Button, Heading, Label } from '@status-im/components'
-// import { Paragraph } from '@status-im/components'
-// import { Avatar } from '../../node_modules/@status-im/components/packages/components/dist/avatar/index'
-// import { Button } from '../../node_modules/@status-im/components/packages/components/dist/button/index'
-// import { Heading } from '../../node_modules/@status-im/components/packages/components/dist/typography/index'
-// import { Label } from '../../node_modules/@status-im/components/packages/components/dist/typography/index'
 
 // import { mockData } from '../../.data/mockData'
 
