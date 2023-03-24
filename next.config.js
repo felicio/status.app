@@ -11,8 +11,8 @@ const plugins = [
     config: './tamagui.config.ts',
     components: [
       // fixme?: works without it
-      // './node_modules/@status-im/components/packages/components/dist',
       // '@status-im/components',
+      // './node_modules/@status-im/components/packages/components/dist',
     ],
     importsWhitelist: ['constants.js', 'colors.js'],
     logTimings: true,
@@ -30,23 +30,21 @@ const plugins = [
 module.exports = function () {
   /** @type {import('next').NextConfig} */
   let config = {
-    // webpack: (
-    //   config,
-    //   { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack },
-    // ) => {
-    //   // Important: return the modified config
-    //   // console.log('HERE', isServer)
-    //   return { ...config, nextRuntime: 'edge' }
-    // },
     typescript: {
       ignoreBuildErrors: true,
     },
     images: {
       disableStaticImages: true,
     },
-    transpilePackages: ['react-native-web', '@status-im/components'],
+    transpilePackages: [
+      'react-native',
+      'react-native-web',
+      'expo-modules-core',
+      '@status-im/components',
+    ],
     experimental: {
       legacyBrowsers: false,
+      // esmExternals: 'loose',
     },
 
     reactStrictMode: false,

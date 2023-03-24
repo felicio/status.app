@@ -9,7 +9,8 @@
       "name": "Next.js: debug server-side",
       "type": "node-terminal",
       "request": "launch",
-      "command": "yarn dev"
+      // "command": "yarn dev"
+      "command": "npm run dev"
       // "skipFiles": ["<node_internals>/**", "**/node_modules/**", "**/.next/**"],
       // "smartStep": true,
       // "sourceMaps": true
@@ -29,7 +30,8 @@
         // "<node_internals>/**/*.js"
         "<node_internals>/**",
         "**/webpack-internal://**"
-      ]
+      ],
+      "runtimeArgs": ["--auto-open-devtools-for-tabs"]
     },
     // todo: conssider https://code.visualstudio.com/docs/editor/debugging#_compound-launch-configurations instead
     // todo: consider client+prelaunch as full stack
@@ -43,7 +45,8 @@
       // },
       "request": "launch",
       // "command": "yarn dev",
-      "command": "yarn dev -p 3000",
+      // "command": "yarn dev -p 3000",
+      "command": "npm run dev -- -p 3000",
       // "outputCapture": "console",
       // "internalConsoleOptions": "neverOpen",
       "serverReadyAction": {
